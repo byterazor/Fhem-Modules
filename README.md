@@ -12,8 +12,8 @@ This Repository holds my modules for the FHEM home automation system.
 ## Installation
 ### via Update
 Use the following commands to add this repository to your FHEM installation and install all my modules.
-* update add  https://raw.githubusercontent.com/byterazor/Fhem-Modules/master/controls_byterazor-fhem-modules.txt
-* update all https://raw.githubusercontent.com/byterazor/Fhem-Modules/master/controls_byterazor-fhem-modules.txt
+* update add  https://raw.githubusercontent.com/byterazor/Fhem-Modules/master/controls-byterazor-fhem-modules.txt
+* update all https://raw.githubusercontent.com/byterazor/Fhem-Modules/master/controls-byterazor-fhem-modules.txt
 
 ## Contributors
 
