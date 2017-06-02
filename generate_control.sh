@@ -13,6 +13,7 @@ done
 
 
 #generate CHANGELOG
+rm CHANGED
 DATE=
 git log --no-merges --pretty=format:'%ci|%s' | while read -r line; do
   CDATE=`echo $line | awk '{print $1}'`
