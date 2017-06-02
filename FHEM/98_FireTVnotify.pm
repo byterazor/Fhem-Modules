@@ -6,7 +6,6 @@ use POSIX;
 use Color;
 use HTTP::Request::Common;
 use LWP::UserAgent;
-use Image::Magick;
 use File::Temp qw/ tempfile /;
 use File::Find;
 
@@ -36,7 +35,10 @@ sub get_icons {
     }
     else
     {
-      push(@files,$e);
+      if ($e =~/.*\.(png|jpg)$/)
+      {
+        push(@files,$e);
+      }
     }
   }
 
@@ -47,16 +49,7 @@ sub ShowNotify
 {
   my ($hash) = @_;
 
-  my ($fh, $filename) = tempfile( "/tmp/tmpXXXXXX", SUFFIX => '.png');
-  my $help=readpipe("pwd");
-  $help =~s/\n//;
-  Log3 undef, 3, "CURDIR: " . $help;
-  Log3 undef, 3, "Image: " . $help . "/" . $FW_icondir . "/" . $hash->{MSG_ICON} ;
-  Log3 undef, 3, "Temp: " . $filename;
-  my $p = new Image::Magick;
-  $p->Read($help . "/" . $FW_icondir . "/" . $hash->{MSG_ICON});
-  $p->Write($filename);
-
+  my $filename = $FW_icondir . "/" . $hash->{MSG_ICON};
   my $ua      = LWP::UserAgent->new();
   my $notify_data = [
     type          => $hash->{helper}->{MSG_TYPE},
